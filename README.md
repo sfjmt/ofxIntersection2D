@@ -9,5 +9,12 @@ This addon can get the intersections(2D).
 
 ![example_circle](README_img/window_example_line_fast.png)
 
+# Compatibility
+oF 0.9.8
+
+# Installation
+
+Copy to your openFrameworks/addons folder.
+
 # Dependencies
 None

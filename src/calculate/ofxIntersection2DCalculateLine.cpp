@@ -7,17 +7,17 @@ void ofxIntersection2D::Line2D::clear() {
 }
 
 //--------------------------------------------------------------
-void ofxIntersection2D::Line2D::add(ofVec2f &p1, ofVec2f &p2) {
+void ofxIntersection2D::Line2D::addLine(ofVec2f &beginPosition, ofVec2f &endPosition) {
     data.push_back(ofxIntersection2D::ObjectLine());
 
     int index = data.size() - 1;
-    data[index].set(p1, p2);
+    data[index].set(beginPosition, endPosition);
 }
 
 //--------------------------------------------------------------
-void ofxIntersection2D::Line2D::render(vector<ofVec2f> &list1, vector<ofVec2f> &list2) {
-    this->list1 = list1;
-    this->list2 = list2;
+void ofxIntersection2D::Line2D::render(vector<ofVec2f> &lineBeginPosList, vector<ofVec2f> &lineEndPosList) {
+    this->lineBeginPosList = lineBeginPosList;
+    this->lineEndPosList = lineEndPosList;
 }
 
 //--------------------------------------------------------------
@@ -43,7 +43,7 @@ void ofxIntersection2D::Line2D::update() {
 
 //--------------------------------------------------------------
 void ofxIntersection2D::Line2D::updateInThread() {
-    vector<ofVec2f> list = getMultipleIntersectionsManagement(list1, list2);
+    vector<ofVec2f> list = getMultipleIntersectionsManagement(lineBeginPosList, lineEndPosList);
     vector<ofVec2f> tmpIntersectionList;
 
     int total = list.size();
@@ -73,7 +73,7 @@ vector<ofVec2f> ofxIntersection2D::Line2D::getMultipleIntersectionsManagement(ve
     for (int i = 0; i < total; ++i) {
         for (int j = 0; j < total; ++j) {
             if (i != j) {
-                position.push_back(getLineIntersection(data[i].position1, data[i].position2, data[j].position1, data[j].position2));
+                position.push_back(getLineIntersection(data[i].p1, data[i].p2, data[j].p1, data[j].p2));
             } else if (i == j) {
                 continue;
             }
@@ -83,14 +83,14 @@ vector<ofVec2f> ofxIntersection2D::Line2D::getMultipleIntersectionsManagement(ve
 }
 
 //--------------------------------------------------------------
-vector<ofVec2f> ofxIntersection2D::Line2D::getMultipleIntersectionsManagement(vector<ofVec2f> tmpList1, vector<ofVec2f> tmpList2) {
+vector<ofVec2f> ofxIntersection2D::Line2D::getMultipleIntersectionsManagement(vector<ofVec2f> tmpLineBeginPosList, vector<ofVec2f> tmpLineEndPosList) {
     vector<ofVec2f> position;
 
-    int total = list1.size();
+    int total = tmpLineBeginPosList.size();
     for (int i = 0; i < total; ++i) {
         for (int j = 0; j < total; ++j) {
             if (i != j) {
-                position.push_back(getLineIntersection(tmpList1[i], tmpList2[i], tmpList1[j], tmpList2[j]));
+                position.push_back(getLineIntersection(tmpLineBeginPosList[i], tmpLineEndPosList[i], tmpLineBeginPosList[j], tmpLineEndPosList[j]));
             } else if (i == j) {
                 continue;
             }

@@ -19,11 +19,13 @@ class BaseIntersection : public ofThread {
 
     virtual void clear(){};
 
-    virtual void add(ofVec2f &centralPosition, double &radius){};  // for circle object
-    virtual void add(ofVec2f &p1, ofVec2f &p2){};                  // for line object
+    virtual void addCircle(ofVec2f &centralPosition, double &radius){};
+    virtual void addLine(ofVec2f &beginPosition, ofVec2f &endPosition){};
+    virtual void addPoint(ofVec2f &pt){};
 
-    virtual void render(vector<ofVec2f> &centralPositionList, vector<double> &radiusList){};  // for circle object
-    virtual void render(vector<ofVec2f> &list1, vector<ofVec2f> &list2){};                    // for line object
+    virtual void render(vector<ofVec2f> &centralPositionList, vector<double> &radiusList){};
+    virtual void render(vector<ofVec2f> &lineBeginPosList, vector<ofVec2f> &lineEndPosList){};
+    virtual void render(vector<ofVec2f> &lineBeginPosList, vector<ofVec2f> &lineEndPosList, vector<ofVec2f> &centralPositionList, vector<double> &radiusList){};
 
     virtual void start() { startThread(); };
     virtual void stop() { stopThread(); };

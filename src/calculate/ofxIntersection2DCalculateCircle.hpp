@@ -12,7 +12,7 @@ class Circle2D : public BaseIntersection {
     ~Circle2D(){};
 
     void clear() override;
-    void add(ofVec2f &centralPosition, double &radius) override;
+    void addCircle(ofVec2f &centralPosition, double &radius) override;
     void render(vector<ofVec2f> &centralPositionList, vector<double> &radiusList) override;
     void update() override;
     void updateInThread() override;

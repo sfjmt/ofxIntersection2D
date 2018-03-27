@@ -7,7 +7,7 @@ void ofxIntersection2D::Circle2D::clear() {
 }
 
 //--------------------------------------------------------------
-void ofxIntersection2D::Circle2D::add(ofVec2f &centralPosition, double &radius) {
+void ofxIntersection2D::Circle2D::addCircle(ofVec2f &centralPosition, double &radius) {
     data.push_back(ofxIntersection2D::ObjectCircle());
 
     int index = data.size() - 1;
@@ -89,7 +89,7 @@ vector<vector<ofVec2f> > ofxIntersection2D::Circle2D::getMultipleIntersectionsMa
     for (int i = 0; i < total; ++i) {
         for (int j = 0; j < total; ++j) {
             if (i != j) {
-                positions.push_back(getIntersection(data[i].position, data[i].radius, data[j].position, data[j].radius));
+                positions.push_back(getIntersection(data[i].central, data[i].radius, data[j].central, data[j].radius));
             } else if (i == j) {
                 continue;
             }

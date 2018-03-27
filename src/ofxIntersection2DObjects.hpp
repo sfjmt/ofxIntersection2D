@@ -6,7 +6,7 @@
 namespace ofxIntersection2D {
 //==============================================================
 //
-// ofxIntersection2DObjects::IntersectionSimplyCircle
+// ofxIntersection2D::ofxIntersection2DObjects::ObjectCircle
 //
 //==============================================================
 class ObjectCircle {
@@ -14,12 +14,12 @@ class ObjectCircle {
     ObjectCircle(){};
     ~ObjectCircle(){};
 
-    void set(ofVec2f position, double radius) {
-        this->position = position;
+    void set(ofVec2f central, double radius) {
+        this->central = central;
         this->radius = radius;
     };
 
-    ofVec2f position;
+    ofVec2f central;
     double radius;
 
    private:
@@ -27,7 +27,7 @@ class ObjectCircle {
 
 //==============================================================
 //
-// ofxIntersection2DObjects::IntersectionSimplyCircle
+// ofxIntersection2D::ofxIntersection2DObjects::ObjectLine
 //
 //==============================================================
 class ObjectLine {
@@ -36,12 +36,12 @@ class ObjectLine {
     ~ObjectLine(){};
 
     void set(ofVec2f p1, ofVec2f p2) {
-        this->position1 = p1;
-        this->position2 = p2;
+        this->p1 = p1;
+        this->p2 = p2;
     };
 
-    ofVec2f position1;
-    ofVec2f position2;
+    ofVec2f p1;
+    ofVec2f p2;
 
    private:
 };

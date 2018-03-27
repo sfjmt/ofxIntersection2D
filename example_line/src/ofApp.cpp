@@ -6,8 +6,11 @@ void ofApp::setup() {
 
     total = 10;
     for (int i = 0; i < total; i++) {
-        lineBeginPosList.push_back(ofVec2f(0, ofRandom(0.0, ofGetHeight())));
-        lineEndPosList.push_back(ofVec2f(ofGetWidth(), ofRandom(0.0, ofGetHeight())));
+        baseLineBeginPosList.push_back(ofVec2f(0, ofRandom(0.0, ofGetHeight())));
+        baseLineEndPosList.push_back(ofVec2f(ofGetWidth(), ofRandom(0.0, ofGetHeight())));
+
+        lineBeginPosList.push_back(baseLineBeginPosList[i]);
+        lineEndPosList.push_back(baseLineEndPosList[i]);
     }
 }
 
@@ -21,8 +24,20 @@ void ofApp::update() {
     //--------------------------------------------------------------
     // 2. Add
     //--------------------------------------------------------------
+    ofVec2f vBegin;
+    ofVec2f vEnd;
+
     for (int i = 0; i < total; i++) {
-        intersection->add(lineBeginPosList[i], lineEndPosList[i]);
+        vBegin.x = 0;
+        vBegin.y = cos((ofGetElapsedTimef() + 1.0 * i) * 1.0) * 20;
+
+        vEnd.x = 0;
+        vEnd.y = sin((ofGetElapsedTimef() + 1.0 * i) * 1.0) * 20;
+
+        lineBeginPosList[i] = baseLineBeginPosList[i] + vBegin;
+        lineEndPosList[i] = baseLineEndPosList[i] + vEnd;
+
+        intersection->addLine(lineBeginPosList[i], lineEndPosList[i]);
     }
 
     //--------------------------------------------------------------

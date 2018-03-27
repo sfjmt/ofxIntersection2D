@@ -8,8 +8,11 @@ void ofApp::setup() {
 
     total = 10;
     for (int i = 0; i < total; i++) {
-        circleCentralPosList.push_back(ofVec2f(ofRandom(0.0, ofGetWidth()), ofRandom(0.0, ofGetHeight())));
-        circleRadList.push_back(ofRandom(100.0, 300.0));
+        baseCircleCentralPosList.push_back(ofVec2f(ofRandom(0.0, ofGetWidth()), ofRandom(0.0, ofGetHeight())));
+        baseCircleRadList.push_back(ofRandom(100.0, 300.0));
+
+        circleCentralPosList.push_back(baseCircleCentralPosList[i]);
+        circleRadList.push_back(baseCircleRadList[i]);
     }
 }
 
@@ -23,8 +26,18 @@ void ofApp::update() {
     //--------------------------------------------------------------
     // 2. Add
     //--------------------------------------------------------------
+    ofVec2f v;
+    double rad;
+
     for (int i = 0; i < total; i++) {
-        intersection->add(circleCentralPosList[i], circleRadList[i]);
+        v.x = cos((ofGetElapsedTimef() + 1.0 * i) * 1.0) * 20;
+        v.y = sin((ofGetElapsedTimef() + 1.0 * i) * 1.0) * 20;
+        circleCentralPosList[i] = baseCircleCentralPosList[i] + v;
+
+        rad = cos((ofGetElapsedTimef() + 1.0 * i) * 1.0) * (circleRadList[i] * 0.1);
+        circleRadList[i] = baseCircleRadList[i] + rad;
+
+        intersection->addCircle(circleCentralPosList[i], circleRadList[i]);
     }
 
     //--------------------------------------------------------------

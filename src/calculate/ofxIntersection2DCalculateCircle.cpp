@@ -21,6 +21,22 @@ void ofxIntersection2D::Circle2D::render(vector<ofVec2f> &centralPositionList, v
 }
 
 //--------------------------------------------------------------
+void ofxIntersection2D::Circle2D::render(vector<ofxIntersection2D::ObjectCircle> &circleList) {
+    vector<ofVec2f> tmpCentralPositionList;
+    vector<double> tmpRadiusList;
+
+    int totalCircle = circleList.size();
+
+    for (int i = 0; i < totalCircle; i++) {
+        tmpCentralPositionList.push_back(circleList[i].central);
+        tmpRadiusList.push_back(circleList[i].radius);
+    }
+
+    this->centralPositionList = tmpCentralPositionList;
+    this->radiusList = tmpRadiusList;
+}
+
+//--------------------------------------------------------------
 void ofxIntersection2D::Circle2D::update() {
     vector<vector<ofVec2f> > list = getMultipleIntersectionsManagement(data);
 

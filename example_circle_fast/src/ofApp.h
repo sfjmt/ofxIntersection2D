@@ -13,7 +13,6 @@ class ofApp : public ofBaseApp {
     ofxIntersection2D::BaseIntersection *intersection;
 
     int total;
-    vector<ofVec2f> circleCentralPosList;
     vector<ofVec2f> baseCircleCentralPosList;
-    vector<double> circleRadList;
+    vector<ofxIntersection2D::ObjectCircle> circleList;
 };

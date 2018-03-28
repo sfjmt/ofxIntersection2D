@@ -14,6 +14,7 @@ class Line2D : public BaseIntersection {
     void clear() override;
     void addLine(ofVec2f &beginPosition, ofVec2f &endPosition) override;
     void render(vector<ofVec2f> &lineBeginPosList, vector<ofVec2f> &lineEndPosList) override;
+    void render(vector<ofxIntersection2D::ObjectLine> &lineList) override;
     void update() override;
     void updateInThread() override;
 

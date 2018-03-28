@@ -14,6 +14,7 @@ class Circle2D : public BaseIntersection {
     void clear() override;
     void addCircle(ofVec2f &centralPosition, double &radius) override;
     void render(vector<ofVec2f> &centralPositionList, vector<double> &radiusList) override;
+    void render(vector<ofxIntersection2D::ObjectCircle> &circleList) override;
     void update() override;
     void updateInThread() override;
 

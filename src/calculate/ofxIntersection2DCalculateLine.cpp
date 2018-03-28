@@ -21,6 +21,22 @@ void ofxIntersection2D::Line2D::render(vector<ofVec2f> &lineBeginPosList, vector
 }
 
 //--------------------------------------------------------------
+void ofxIntersection2D::Line2D::render(vector<ofxIntersection2D::ObjectLine> &lineList) {
+    vector<ofVec2f> tmpLineBeginPosList;
+    vector<ofVec2f> tmpLineEndPosList;
+
+    int totalLine = lineList.size();
+
+    for (int i = 0; i < totalLine; i++) {
+        tmpLineBeginPosList.push_back(lineList[i].p1);
+        tmpLineEndPosList.push_back(lineList[i].p2);
+    }
+
+    this->lineBeginPosList = tmpLineBeginPosList;
+    this->lineEndPosList = tmpLineEndPosList;
+}
+
+//--------------------------------------------------------------
 void ofxIntersection2D::Line2D::update() {
     vector<ofVec2f> list = getMultipleIntersectionsManagement(data);
 

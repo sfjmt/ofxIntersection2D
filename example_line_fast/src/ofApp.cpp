@@ -5,10 +5,9 @@ void ofApp::setup() {
     intersection = new ofxIntersection2D::Line2D();
     intersection->start();  // start threadedFunction
 
-    total = 100; /* About 100 limit... */
+    total = 80; /* About 100 limit... */
     for (int i = 0; i < total; i++) {
-        lineBeginPosList.push_back(ofVec2f(0, ofRandom(0.0, ofGetHeight())));
-        lineEndPosList.push_back(ofVec2f(ofGetWidth(), ofRandom(0.0, ofGetHeight())));
+        lineList.push_back(ofxIntersection2D::ObjectLine());
     }
 }
 
@@ -34,14 +33,14 @@ void ofApp::update() {
         endX = w;
         endY = sin((timef + 0.5 * i) * 0.1) * (h * 0.5) + (h * 0.5);
 
-        lineBeginPosList[i] = ofVec2f(beginX, beginY);
-        lineEndPosList[i] = ofVec2f(endX, endY);
+        lineList[i].p1 = ofVec2f(beginX, beginY);
+        lineList[i].p2 = ofVec2f(endX, endY);
     }
 
     //--------------------------------------------------------------
     // Add object list. You have to execute this function in update.
     //--------------------------------------------------------------
-    intersection->render(lineBeginPosList, lineEndPosList);
+    intersection->render(lineList);
 }
 
 //--------------------------------------------------------------
@@ -66,7 +65,7 @@ void ofApp::draw() {
     //--------------------------------------------------------------
     ofSetColor(0, 0, 255);
     for (int i = 0; i < total; i++) {
-        ofDrawLine(lineBeginPosList[i], lineEndPosList[i]);
+        ofDrawLine(lineList[i].p1, lineList[i].p2);
     }
 
     //--------------------------------------------------------------

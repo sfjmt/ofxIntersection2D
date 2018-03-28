@@ -33,6 +33,32 @@ void ofxIntersection2D::LineAndCircle2D::render(vector<ofVec2f> &lineBeginPosLis
 }
 
 //--------------------------------------------------------------
+void ofxIntersection2D::LineAndCircle2D::render(vector<ofxIntersection2D::ObjectLine> &lineList, vector<ofxIntersection2D::ObjectCircle> &circleList) {
+    vector<ofVec2f> tmpLineBeginPosList;
+    vector<ofVec2f> tmpLineEndPosList;
+    vector<ofVec2f> tmpCentralPositionList;
+    vector<double> tmpRadiusList;
+
+    int totalLine = lineList.size();
+    int totalCircle = circleList.size();
+
+    for (int i = 0; i < totalLine; i++) {
+        tmpLineBeginPosList.push_back(lineList[i].p1);
+        tmpLineEndPosList.push_back(lineList[i].p2);
+    }
+
+    for (int i = 0; i < totalCircle; i++) {
+        tmpCentralPositionList.push_back(circleList[i].central);
+        tmpRadiusList.push_back(circleList[i].radius);
+    }
+
+    this->lineBeginPosList = tmpLineBeginPosList;
+    this->lineEndPosList = tmpLineEndPosList;
+    this->centralPositionList = tmpCentralPositionList;
+    this->radiusList = tmpRadiusList;
+}
+
+//--------------------------------------------------------------
 void ofxIntersection2D::LineAndCircle2D::update() {
     vector<ofVec2f> list = getMultipleIntersectionsManagement(dataLineList, dataCircleList);
 
@@ -78,16 +104,13 @@ void ofxIntersection2D::LineAndCircle2D::updateInThread() {
 }
 
 //--------------------------------------------------------------
-vector<ofVec2f> ofxIntersection2D::LineAndCircle2D::getIntersection(ofVec2f &central, double &rad, ofVec2f &lineBeginPos, ofVec2f &lineEndPos) {
+vector<ofVec2f> ofxIntersection2D::LineAndCircle2D::getIntersection(ofVec2f central, double rad, ofVec2f lineBeginPos, ofVec2f lineEndPos) {
     vector<ofVec2f> list;
 
     ofVec2f perpendicular = intersectionPerpendicularLine.getPerpendicularPosition(lineBeginPos, lineEndPos, central);
     float k = central.distance(perpendicular);
 
-    if (k > rad) {
-        // Not found intersections.
-        return list;
-    } else if (k < rad) {
+    if (k < rad) {
         // Found two intersection.
         float L = lineBeginPos.distance(lineEndPos);
         float S = sqrt(pow(rad, 2) - pow(k, 2));
@@ -107,6 +130,9 @@ vector<ofVec2f> ofxIntersection2D::LineAndCircle2D::getIntersection(ofVec2f &cen
         list.push_back(v1);
         list.push_back(v2);
         return list;
+    } else if (k > rad) {
+        // Not found intersections.
+        return list;
     } else {
         // Found one intersection.
         list.push_back(perpendicular);
@@ -117,7 +143,7 @@ vector<ofVec2f> ofxIntersection2D::LineAndCircle2D::getIntersection(ofVec2f &cen
 }
 
 //--------------------------------------------------------------
-vector<ofVec2f> ofxIntersection2D::LineAndCircle2D::getMultipleIntersectionsManagement(vector<ofxIntersection2D::ObjectLine> &lineList, vector<ofxIntersection2D::ObjectCircle> &circleList) {
+vector<ofVec2f> ofxIntersection2D::LineAndCircle2D::getMultipleIntersectionsManagement(vector<ofxIntersection2D::ObjectLine> lineList, vector<ofxIntersection2D::ObjectCircle> circleList) {
     vector<ofVec2f> list;
 
     int totalLine = lineList.size();
@@ -139,8 +165,8 @@ vector<ofVec2f> ofxIntersection2D::LineAndCircle2D::getMultipleIntersectionsMana
 }
 
 //--------------------------------------------------------------
-vector<ofVec2f> ofxIntersection2D::LineAndCircle2D::getMultipleIntersectionsManagement(vector<ofVec2f> &tmpLineBeginPosList, vector<ofVec2f> &tmpLineEndPosList,
-                                                                                       vector<ofVec2f> &tmpCentralPositionList, vector<double> &tmpRadiusList) {
+vector<ofVec2f> ofxIntersection2D::LineAndCircle2D::getMultipleIntersectionsManagement(vector<ofVec2f> tmpLineBeginPosList, vector<ofVec2f> tmpLineEndPosList, vector<ofVec2f> tmpCentralPositionList,
+                                                                                       vector<double> tmpRadiusList) {
     vector<ofVec2f> list;
 
     int totalLine = tmpLineBeginPosList.size();

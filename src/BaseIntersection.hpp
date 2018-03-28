@@ -24,8 +24,13 @@ class BaseIntersection : public ofThread {
     virtual void addPoint(ofVec2f &pt){};
 
     virtual void render(vector<ofVec2f> &centralPositionList, vector<double> &radiusList){};
+    virtual void render(vector<ofxIntersection2D::ObjectCircle> &circleList){};
+
     virtual void render(vector<ofVec2f> &lineBeginPosList, vector<ofVec2f> &lineEndPosList){};
+    virtual void render(vector<ofxIntersection2D::ObjectLine> &lineList){};
+
     virtual void render(vector<ofVec2f> &lineBeginPosList, vector<ofVec2f> &lineEndPosList, vector<ofVec2f> &centralPositionList, vector<double> &radiusList){};
+    virtual void render(vector<ofxIntersection2D::ObjectLine> &lineList, vector<ofxIntersection2D::ObjectCircle> &circleList){};
 
     virtual void start() { startThread(); };
     virtual void stop() { stopThread(); };

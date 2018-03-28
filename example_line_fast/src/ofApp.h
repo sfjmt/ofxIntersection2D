@@ -13,6 +13,5 @@ class ofApp : public ofBaseApp {
     ofxIntersection2D::BaseIntersection *intersection;
 
     int total;
-    vector<ofVec2f> lineBeginPosList;
-    vector<ofVec2f> lineEndPosList;
+    vector<ofxIntersection2D::ObjectLine> lineList;
 };

@@ -12,7 +12,7 @@ class PerpendicularLine2D : public BaseIntersection {
     ~PerpendicularLine2D(){};
 
     //--------------------------------------------------------------
-    inline ofVec2f getPerpendicularPosition(ofVec2f &lineBeginPos, ofVec2f &lineEndPos, ofVec2f &pointPos) {
+    inline ofVec2f getPerpendicularPosition(ofVec2f lineBeginPos, ofVec2f lineEndPos, ofVec2f pointPos) {
         ofVec2f pos;
 
         if (lineEndPos.x == lineBeginPos.x) {
@@ -34,7 +34,7 @@ class PerpendicularLine2D : public BaseIntersection {
     };
 
     //--------------------------------------------------------------
-    inline vector<ofVec2f> getMultipleIntersectionsManagement(vector<ofxIntersection2D::ObjectLine> &lineList, vector<ofVec2f> &pointList) {
+    inline vector<ofVec2f> getMultipleIntersectionsManagement(vector<ofxIntersection2D::ObjectLine> lineList, vector<ofVec2f> 	pointList) {
         vector<ofVec2f> positions;
 
         int totalLine = lineList.size();

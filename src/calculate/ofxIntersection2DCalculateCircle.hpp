@@ -12,7 +12,7 @@ class Circle2D : public BaseIntersection {
     ~Circle2D(){};
 
     //--------------------------------------------------------------
-    inline vector<vector<ofVec2f> > getMultipleIntersectionsManagement(vector<ofxIntersection2D::ObjectCircle> &data) {
+    inline vector<vector<ofVec2f> > getMultipleIntersectionsManagement(vector<ofxIntersection2D::ObjectCircle> data) {
         vector<vector<ofVec2f> > positions;
 
         int total = data.size();
@@ -29,7 +29,7 @@ class Circle2D : public BaseIntersection {
     };
 
     //--------------------------------------------------------------
-    inline vector<vector<ofVec2f> > getMultipleIntersectionsManagement(vector<ofVec2f> &tmpCentralPositionList, vector<double> &tmpRadiusList) {
+    inline vector<vector<ofVec2f> > getMultipleIntersectionsManagement(vector<ofVec2f> tmpCentralPositionList, vector<double> tmpRadiusList) {
         vector<vector<ofVec2f> > positions;
 
         int total = tmpCentralPositionList.size();
@@ -46,7 +46,7 @@ class Circle2D : public BaseIntersection {
     };
 
     //--------------------------------------------------------------
-    inline vector<ofVec2f> getIntersection(ofVec2f &p1, double &r1, ofVec2f &p2, double &r2) {
+    inline vector<ofVec2f> getIntersection(ofVec2f p1, double r1, ofVec2f p2, double r2) {
         vector<ofVec2f> positions;
 
         double distance = sqrt(pow(p2.x - p1.x, 2) + pow(p2.y - p1.y, 2));

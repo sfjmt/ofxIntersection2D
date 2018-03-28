@@ -12,7 +12,7 @@ class Line2D : public BaseIntersection {
     ~Line2D(){};
 
     //--------------------------------------------------------------
-    inline vector<ofVec2f> getMultipleIntersectionsManagement(vector<ofxIntersection2D::ObjectLine> &data) {
+    inline vector<ofVec2f> getMultipleIntersectionsManagement(vector<ofxIntersection2D::ObjectLine> data) {
         vector<ofVec2f> position;
 
         int total = data.size();
@@ -29,7 +29,7 @@ class Line2D : public BaseIntersection {
     };
 
     //--------------------------------------------------------------
-    inline vector<ofVec2f> getMultipleIntersectionsManagement(vector<ofVec2f> &tmpLineBeginPosList, vector<ofVec2f> &tmpLineEndPosList) {
+    inline vector<ofVec2f> getMultipleIntersectionsManagement(vector<ofVec2f> tmpLineBeginPosList, vector<ofVec2f> tmpLineEndPosList) {
         vector<ofVec2f> position;
 
         int total = tmpLineBeginPosList.size();
@@ -46,7 +46,7 @@ class Line2D : public BaseIntersection {
     };
 
     //--------------------------------------------------------------
-    inline ofVec2f getLineIntersection(ofVec2f &p1_1, ofVec2f &p1_2, ofVec2f &p2_1, ofVec2f &p2_2) {
+    inline ofVec2f getLineIntersection(ofVec2f p1_1, ofVec2f p1_2, ofVec2f p2_1, ofVec2f p2_2) {
         ofVec2f pos;
 
         double dev = (p1_2.y - p1_1.y) * (p2_2.x - p2_1.x) - (p1_2.x - p1_1.x) * (p2_2.y - p2_1.y);

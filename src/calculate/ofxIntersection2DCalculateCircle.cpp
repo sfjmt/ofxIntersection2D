@@ -2,8 +2,8 @@
 
 //--------------------------------------------------------------
 void ofxIntersection2D::Circle2D::clear() {
-    if (data.size()) data.clear();
-    if (intersectionPositionList.size()) intersectionPositionList.clear();
+    clearArray<ofxIntersection2D::ObjectCircle>(data);
+    clearArray<ofVec2f>(intersectionPositionList);
 }
 
 //--------------------------------------------------------------
@@ -38,7 +38,7 @@ void ofxIntersection2D::Circle2D::render(vector<ofxIntersection2D::ObjectCircle>
 
 //--------------------------------------------------------------
 void ofxIntersection2D::Circle2D::update() {
-    vector<vector<ofVec2f> > list = getMultipleIntersectionsManagement(data);
+    vector<vector<ofVec2f>> list = getMultipleIntersectionsManagement(data);
 
     int total = list.size();
     int totalElement;
@@ -67,7 +67,7 @@ void ofxIntersection2D::Circle2D::update() {
 
 //--------------------------------------------------------------
 void ofxIntersection2D::Circle2D::updateInThread() {
-    vector<vector<ofVec2f> > list = getMultipleIntersectionsManagement(centralPositionList, radiusList);
+    vector<vector<ofVec2f>> list = getMultipleIntersectionsManagement(centralPositionList, radiusList);
     vector<ofVec2f> tmpIntersectionList;
 
     int total = list.size();
@@ -95,59 +95,4 @@ void ofxIntersection2D::Circle2D::updateInThread() {
     }
 
     intersectionPositionList = tmpIntersectionList;
-}
-
-//--------------------------------------------------------------
-vector<vector<ofVec2f> > ofxIntersection2D::Circle2D::getMultipleIntersectionsManagement(vector<ofxIntersection2D::ObjectCircle> data) {
-    vector<vector<ofVec2f> > positions;
-
-    int total = data.size();
-    for (int i = 0; i < total; ++i) {
-        for (int j = 0; j < total; ++j) {
-            if (i != j) {
-                positions.push_back(getIntersection(data[i].central, data[i].radius, data[j].central, data[j].radius));
-            } else if (i == j) {
-                continue;
-            }
-        }
-    }
-    return positions;
-}
-
-//--------------------------------------------------------------
-vector<vector<ofVec2f> > ofxIntersection2D::Circle2D::getMultipleIntersectionsManagement(vector<ofVec2f> tmpCentralPositionList, vector<double> tmpRadiusList) {
-    vector<vector<ofVec2f> > positions;
-
-    int total = tmpCentralPositionList.size();
-    for (int i = 0; i < total; ++i) {
-        for (int j = 0; j < total; ++j) {
-            if (i != j) {
-                positions.push_back(getIntersection(tmpCentralPositionList[i], tmpRadiusList[i], tmpCentralPositionList[j], tmpRadiusList[j]));
-            } else if (i == j) {
-                continue;
-            }
-        }
-    }
-    return positions;
-}
-
-//--------------------------------------------------------------
-vector<ofVec2f> ofxIntersection2D::Circle2D::getIntersection(ofVec2f p1, double r1, ofVec2f p2, double r2) {
-    vector<ofVec2f> positions;
-
-    double distance = sqrt(pow(p2.x - p1.x, 2) + pow(p2.y - p1.y, 2));
-    double angle = atan2((p2.y - p1.y), (p2.x - p1.x));
-    double theta = acos((pow(distance, 2) + pow(r1, 2) - pow(r2, 2)) / (2 * distance * r1));
-
-    ofVec2f intersection1;
-    ofVec2f intersection2;
-
-    intersection1.x = p1.x + r1 * cos(angle + theta);
-    intersection1.y = p1.y + r1 * sin(angle + theta);
-    intersection2.x = p1.x + r1 * cos(angle - theta);
-    intersection2.y = p1.y + r1 * sin(angle - theta);
-
-    positions.push_back(intersection1);
-    positions.push_back(intersection2);
-    return positions;
 }

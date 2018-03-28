@@ -121,6 +121,65 @@
 				<key>sourceTree</key>
 				<string>SOURCE_ROOT</string>
 			</dict>
+			<key>C17CC08011B27954087EAC42</key>
+			<dict>
+				<key>fileRef</key>
+				<string>79055DB54B7BF12D40B7F94A</string>
+				<key>isa</key>
+				<string>PBXBuildFile</string>
+			</dict>
+			<key>79055DB54B7BF12D40B7F94A</key>
+			<dict>
+				<key>explicitFileType</key>
+				<string>sourcecode.cpp.cpp</string>
+				<key>fileEncoding</key>
+				<string>30</string>
+				<key>isa</key>
+				<string>PBXFileReference</string>
+				<key>name</key>
+				<string>ofxIntersection2DCalculateLineAndCircle.cpp</string>
+				<key>path</key>
+				<string>../../../addons/ofxIntersection2D/src/calculate/ofxIntersection2DCalculateLineAndCircle.cpp</string>
+				<key>sourceTree</key>
+				<string>SOURCE_ROOT</string>
+			</dict>
+			<key>341887BCBC832BAC3C859AEA</key>
+			<dict>
+				<key>explicitFileType</key>
+				<string>sourcecode.c.h</string>
+				<key>fileEncoding</key>
+				<string>30</string>
+				<key>isa</key>
+				<string>PBXFileReference</string>
+				<key>name</key>
+				<string>ofxIntersection2DCalculateMixAll.hpp</string>
+				<key>path</key>
+				<string>../../../addons/ofxIntersection2D/src/calculate/ofxIntersection2DCalculateMixAll.hpp</string>
+				<key>sourceTree</key>
+				<string>SOURCE_ROOT</string>
+			</dict>
+			<key>6D532E5EFA2DDE8D52B8739D</key>
+			<dict>
+				<key>fileRef</key>
+				<string>3B209347384ED49446A2E958</string>
+				<key>isa</key>
+				<string>PBXBuildFile</string>
+			</dict>
+			<key>3B209347384ED49446A2E958</key>
+			<dict>
+				<key>explicitFileType</key>
+				<string>sourcecode.cpp.cpp</string>
+				<key>fileEncoding</key>
+				<string>30</string>
+				<key>isa</key>
+				<string>PBXFileReference</string>
+				<key>name</key>
+				<string>ofxIntersection2DCalculateMixAll.cpp</string>
+				<key>path</key>
+				<string>../../../addons/ofxIntersection2D/src/calculate/ofxIntersection2DCalculateMixAll.cpp</string>
+				<key>sourceTree</key>
+				<string>SOURCE_ROOT</string>
+			</dict>
 			<key>5BD74B0D545F22B77DAA7F83</key>
 			<dict>
 				<key>explicitFileType</key>
@@ -158,13 +217,39 @@
 				<key>sourceTree</key>
 				<string>SOURCE_ROOT</string>
 			</dict>
+			<key>9A90FE1B4D20E6C270077767</key>
+			<dict>
+				<key>fileRef</key>
+				<string>AC2339341CF6CEB54CEB76AB</string>
+				<key>isa</key>
+				<string>PBXBuildFile</string>
+			</dict>
+			<key>AC2339341CF6CEB54CEB76AB</key>
+			<dict>
+				<key>explicitFileType</key>
+				<string>sourcecode.cpp.cpp</string>
+				<key>fileEncoding</key>
+				<string>30</string>
+				<key>isa</key>
+				<string>PBXFileReference</string>
+				<key>name</key>
+				<string>ofxIntersection2DCalculateCircle.cpp</string>
+				<key>path</key>
+				<string>../../../addons/ofxIntersection2D/src/calculate/ofxIntersection2DCalculateCircle.cpp</string>
+				<key>sourceTree</key>
+				<string>SOURCE_ROOT</string>
+			</dict>
 			<key>2E68F41B735AA6890DFF6009</key>
 			<dict>
 				<key>children</key>
 				<array>
+					<string>4FEAFDB6DC64C6B8B89A88D5</string>
 					<string>AC2339341CF6CEB54CEB76AB</string>
 					<string>D4C9FE4F55D8D9A937B63132</string>
 					<string>5BD74B0D545F22B77DAA7F83</string>
+					<string>3B209347384ED49446A2E958</string>
+					<string>341887BCBC832BAC3C859AEA</string>
+					<string>79055DB54B7BF12D40B7F94A</string>
 					<string>C9AE2BDA3E2B476CC9355251</string>
 					<string>6C5F75B3046B5FC8EC7048D6</string>
 					<string>B163CA407FBA3F460675C8B5</string>
@@ -206,25 +291,18 @@
 				<key>sourceTree</key>
 				<string>&lt;group&gt;</string>
 			</dict>
-			<key>9A90FE1B4D20E6C270077767</key>
-			<dict>
-				<key>fileRef</key>
-				<string>AC2339341CF6CEB54CEB76AB</string>
-				<key>isa</key>
-				<string>PBXBuildFile</string>
-			</dict>
-			<key>AC2339341CF6CEB54CEB76AB</key>
+			<key>4FEAFDB6DC64C6B8B89A88D5</key>
 			<dict>
 				<key>explicitFileType</key>
-				<string>sourcecode.cpp.cpp</string>
+				<string>sourcecode.c.h</string>
 				<key>fileEncoding</key>
 				<string>30</string>
 				<key>isa</key>
 				<string>PBXFileReference</string>
 				<key>name</key>
-				<string>ofxIntersection2DCalculateCircle.cpp</string>
+				<string>ofxIntersection2DCalculateLineAndCircle.hpp</string>
 				<key>path</key>
-				<string>../../../addons/ofxIntersection2D/src/calculate/ofxIntersection2DCalculateCircle.cpp</string>
+				<string>../../../addons/ofxIntersection2D/src/calculate/ofxIntersection2DCalculateLineAndCircle.hpp</string>
 				<key>sourceTree</key>
 				<string>SOURCE_ROOT</string>
 			</dict>
@@ -518,6 +596,8 @@
 					<string>E4B69E210A3A1BDC003C02F2</string>
 					<string>9A90FE1B4D20E6C270077767</string>
 					<string>17F3C89487A130397EC28C53</string>
+					<string>6D532E5EFA2DDE8D52B8739D</string>
+					<string>C17CC08011B27954087EAC42</string>
 					<string>68D8E6F17196FDCBD9FB31E9</string>
 				</array>
 				<key>isa</key>

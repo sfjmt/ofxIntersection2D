@@ -1,6 +1,7 @@
 #pragma once
 
 #include "ofMain.h"
+#include "ofxIntersection2D.hpp"
 
 class ofApp : public ofBaseApp {
    public:
@@ -8,15 +9,15 @@ class ofApp : public ofBaseApp {
     void update();
     void draw();
 
-    void keyPressed(int key);
-    void keyReleased(int key);
-    void mouseMoved(int x, int y);
-    void mouseDragged(int x, int y, int button);
-    void mousePressed(int x, int y, int button);
-    void mouseReleased(int x, int y, int button);
-    void mouseEntered(int x, int y);
-    void mouseExited(int x, int y);
-    void windowResized(int w, int h);
-    void dragEvent(ofDragInfo dragInfo);
-    void gotMessage(ofMessage msg);
+   private:
+    ofxIntersection2D::BaseIntersection *intersection;
+
+    int totalCircle;
+    int totalLine;
+
+    vector<ofxIntersection2D::ObjectCircle> circleList;
+    vector<ofxIntersection2D::ObjectLine> lineList;
+    vector<ofVec2f> intersectionList;
+
+    string caption();
 };

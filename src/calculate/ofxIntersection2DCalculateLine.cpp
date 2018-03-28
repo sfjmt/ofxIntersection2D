@@ -2,8 +2,8 @@
 
 //--------------------------------------------------------------
 void ofxIntersection2D::Line2D::clear() {
-    if (data.size()) data.clear();
-    if (intersectionPositionList.size()) intersectionPositionList.clear();
+    clearArray<ofxIntersection2D::ObjectLine>(data);
+    clearArray<ofVec2f>(intersectionPositionList);
 }
 
 //--------------------------------------------------------------
@@ -79,56 +79,4 @@ void ofxIntersection2D::Line2D::updateInThread() {
     }
 
     intersectionPositionList = tmpIntersectionList;
-}
-
-//--------------------------------------------------------------
-vector<ofVec2f> ofxIntersection2D::Line2D::getMultipleIntersectionsManagement(vector<ofxIntersection2D::ObjectLine> data) {
-    vector<ofVec2f> position;
-
-    int total = data.size();
-    for (int i = 0; i < total; ++i) {
-        for (int j = 0; j < total; ++j) {
-            if (i != j) {
-                position.push_back(getLineIntersection(data[i].p1, data[i].p2, data[j].p1, data[j].p2));
-            } else if (i == j) {
-                continue;
-            }
-        }
-    }
-    return position;
-}
-
-//--------------------------------------------------------------
-vector<ofVec2f> ofxIntersection2D::Line2D::getMultipleIntersectionsManagement(vector<ofVec2f> tmpLineBeginPosList, vector<ofVec2f> tmpLineEndPosList) {
-    vector<ofVec2f> position;
-
-    int total = tmpLineBeginPosList.size();
-    for (int i = 0; i < total; ++i) {
-        for (int j = 0; j < total; ++j) {
-            if (i != j) {
-                position.push_back(getLineIntersection(tmpLineBeginPosList[i], tmpLineEndPosList[i], tmpLineBeginPosList[j], tmpLineEndPosList[j]));
-            } else if (i == j) {
-                continue;
-            }
-        }
-    }
-    return position;
-}
-
-//--------------------------------------------------------------
-ofVec2f ofxIntersection2D::Line2D::getLineIntersection(ofVec2f p1_1, ofVec2f p1_2, ofVec2f p2_1, ofVec2f p2_2) {
-    ofVec2f pos;
-
-    double dev = (p1_2.y - p1_1.y) * (p2_2.x - p2_1.x) - (p1_2.x - p1_1.x) * (p2_2.y - p2_1.y);
-
-    double d1, d2;
-    d1 = (p2_1.y * p2_2.x - p2_1.x * p2_2.y);
-    d2 = (p1_1.y * p1_2.x - p1_1.x * p1_2.y);
-
-    pos.x = d1 * (p1_2.x - p1_1.x) - d2 * (p2_2.x - p2_1.x);
-    pos.x /= dev;
-    pos.y = d1 * (p1_2.y - p1_1.y) - d2 * (p2_2.y - p2_1.y);
-    pos.y /= dev;
-
-    return pos;
 }

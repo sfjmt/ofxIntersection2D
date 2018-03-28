@@ -40,6 +40,11 @@ class BaseIntersection : public ofThread {
     virtual void updateInThread(){};
 
    protected:
+    template <typename T>
+    void clearArray(vector<T> &arr) {
+        arr.clear();
+    };
+
     vector<ofVec2f> intersectionPositionList;
 
    private:

@@ -1,13 +1,21 @@
 # Introduction
 This addon can get the intersections(2D).
 
-![](README_img/window_example_circle.png)
+![](README_img/example_01.png)
 
-![](README_img/window_example_circle_fast.png)
+![](README_img/example_02.png)
 
-![](README_img/window_example_line.png)
+![](README_img/example_03.png)
 
-![](README_img/window_example_line_fast.png)
+![](README_img/example_04.png)
+
+![](README_img/example_05.png)
+
+![](README_img/example_06.png)
+
+![](README_img/example_07.png)
+
+![](README_img/example_08.png)
 
 # Compatibility
 oF 0.9.8

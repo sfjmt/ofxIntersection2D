@@ -2,7 +2,7 @@
 #define ofxIntersection2DCalculateMixAll_hpp
 
 #include "ofMain.h"
-#include "ofxIntersection2DStore.hpp"
+#include "ofxIntersection2D.hpp"
 
 namespace ofxIntersection2D {
 

@@ -6,7 +6,7 @@ void ofApp::setup() {
 
     intersection = new ofxIntersection2D::Circle2D();
 
-    total = 10;
+    total = 5;
     for (int i = 0; i < total; i++) {
         baseCircleCentralPosList.push_back(ofVec2f(ofRandom(0.0, ofGetWidth()), ofRandom(0.0, ofGetHeight())));
         baseCircleRadList.push_back(ofRandom(100.0, 300.0));
@@ -27,7 +27,7 @@ void ofApp::update() {
     // 2. Add
     //--------------------------------------------------------------
     ofVec2f v;
-    double rad;
+    float rad;
 
     for (int i = 0; i < total; i++) {
         v.x = cos((ofGetElapsedTimef() + 1.0 * i) * 1.0) * 20;
@@ -72,5 +72,14 @@ void ofApp::draw() {
     }
 
     // draw caption
-    ofDrawBitmapStringHighlight(ofToString(ofGetFrameRate()), ofPoint(10, 20));
+    ofDrawBitmapStringHighlight(caption(), ofPoint(10, 20));
+}
+
+//--------------------------------------------------------------
+string ofApp::caption() {
+    stringstream ss;
+    ss << ofGetFrameRate() << endl;
+    ss << endl;
+    ss << "intersection total : " << intersection->getIntersectionTotal() << endl;
+    return ss.str();
 }

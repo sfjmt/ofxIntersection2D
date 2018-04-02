@@ -13,21 +13,14 @@ class MixAll2D : public BaseIntersection {
 
    public:
     void clear() override;
-    void addCircle(ofVec2f &centralPosition, double &radius) override;
+    void addCircle(ofVec2f &centralPosition, float &radius) override;
     void addLine(ofVec2f &beginPosition, ofVec2f &endPosition) override;
-    void render(vector<ofVec2f> &lineBeginPosList, vector<ofVec2f> &lineEndPosList, vector<ofVec2f> &centralPositionList, vector<double> &radiusList) override;
-    void render(vector<ofxIntersection2D::ObjectLine> &lineList, vector<ofxIntersection2D::ObjectCircle> &circleList) override;
     void update() override;
-    void updateInThread() override;
 
    private:
-    void updateCircle();
-    void updateLine();
-    void updateLineAndCircle();
-
-    void updateInThreadCircle(vector<ofVec2f> &tmpIntersectionList);
-    void updateInThreadLine(vector<ofVec2f> &tmpIntersectionList);
-    void updateInThreadLineAndCircle(vector<ofVec2f> &tmpIntersectionList);
+    void updateCircle(vector<ofVec2f> &tmpList);
+    void updateLine(vector<ofVec2f> &tmpList);
+    void updateLineAndCircle(vector<ofVec2f> &tmpList);
 
     void updateIntersectionList(vector<ofVec2f> &list, vector<ofVec2f> &tmpList);
 
@@ -41,7 +34,7 @@ class MixAll2D : public BaseIntersection {
     vector<ofVec2f> lineBeginPosList;
     vector<ofVec2f> lineEndPosList;
     vector<ofVec2f> centralPositionList;
-    vector<double> radiusList;
+    vector<float> radiusList;
 };
 }
 #endif /* ofxIntersection2DCalculateMixAll_hpp */

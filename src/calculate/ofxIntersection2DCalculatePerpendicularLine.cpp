@@ -23,18 +23,12 @@ void ofxIntersection2D::PerpendicularLine2D::update() {
     vector<ofVec2f> list = getMultipleIntersectionsManagement(dataLineList, dataPointList);
 
     int total = list.size();
-    int totalIntersection;
-    bool pushEnabled;
-
     for (int i = 0; i < total; ++i) {
-        pushEnabled = true;
-        totalIntersection = intersectionPositionList.size();
-        for (int j = 0; j < totalIntersection; ++j) {
-            if (list[i] == intersectionPositionList[j]) {
-                pushEnabled = false;
-                break;
-            }
+        if (!isAlreadyInList(list[i], intersectionPositionList)) {
+            intersectionPositionList.push_back(list[i]);
+        } else {
+            // ignore
+            continue;
         }
-        if (pushEnabled) intersectionPositionList.push_back(list[i]);
     }
 }

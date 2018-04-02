@@ -14,13 +14,13 @@ class ObjectCircle {
     ObjectCircle(){};
     ~ObjectCircle(){};
 
-    void set(ofVec2f central, double radius) {
+    void set(ofVec2f central, float radius) {
         this->central = central;
         this->radius = radius;
     };
 
     ofVec2f central;
-    double radius;
+    float radius;
 
    private:
 };

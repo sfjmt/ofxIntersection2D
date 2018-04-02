@@ -48,6 +48,9 @@ void ofApp::update() {
     //--------------------------------------------------------------
     intersection->update();
 
+    //--------------------------------------------------------------
+    // 4. Get intersections
+    //--------------------------------------------------------------
     intersectionList = intersection->getIntersections();
 }
 
@@ -55,7 +58,7 @@ void ofApp::update() {
 void ofApp::draw() {
     // draw : circle
     ofNoFill();
-    ofSetColor(255, 0, 0);
+    ofSetColor(0, 0, 255);
     for (int i = 0; i < totalCircle; i++) {
         ofDrawCircle(circleList[i].central, circleList[i].radius);
     }
@@ -68,7 +71,7 @@ void ofApp::draw() {
 
     // draw : intersection
     ofFill();
-    ofSetColor(0);
+    ofSetColor(255, 0, 0);
     for (int i = 0; i < intersectionList.size(); i++) {
         ofDrawCircle(intersectionList[i], 5);
     }
@@ -84,5 +87,7 @@ string ofApp::caption() {
     ss << endl;
     ss << "total line : " << totalLine << endl;
     ss << "total circle : " << totalCircle << endl;
+    ss << endl;
+    ss << "intersection total : " << intersection->getIntersectionTotal() << endl;
     return ss.str();
 }

@@ -70,5 +70,16 @@ void ofApp::draw() {
     }
 
     // draw : caption
-    ofDrawBitmapStringHighlight(ofToString(ofGetFrameRate()), ofPoint(10, 20));
+    ofDrawBitmapStringHighlight(caption(), ofPoint(10, 20));
+}
+
+//--------------------------------------------------------------
+string ofApp::caption() {
+    stringstream ss;
+    ss << ofGetFrameRate() << endl;
+    ss << endl;
+    ss << "total line : " << total << endl;
+    ss << endl;
+    ss << "intersection total : " << intersection->getIntersectionTotal() << endl;
+    return ss.str();
 }

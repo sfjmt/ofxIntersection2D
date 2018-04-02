@@ -10,11 +10,13 @@ class ofApp : public ofBaseApp {
     void draw();
 
    private:
+    string caption();
+
     ofxIntersection2D::BaseIntersection *intersection;
 
     int total;
     vector<ofVec2f> baseCircleCentralPosList;
-    vector<double> baseCircleRadList;
+    vector<float> baseCircleRadList;
     vector<ofVec2f> circleCentralPosList;
-    vector<double> circleRadList;
+    vector<float> circleRadList;
 };

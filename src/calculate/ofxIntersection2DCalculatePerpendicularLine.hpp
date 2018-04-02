@@ -14,6 +14,7 @@ class PerpendicularLine2D : public BaseIntersection {
     //--------------------------------------------------------------
     inline ofVec2f getPerpendicularPosition(ofVec2f lineBeginPos, ofVec2f lineEndPos, ofVec2f pointPos) {
         ofVec2f pos;
+        float m1, m2, b1, b2;
 
         if (lineEndPos.x == lineBeginPos.x) {
             pos.x = lineEndPos.x;
@@ -22,7 +23,6 @@ class PerpendicularLine2D : public BaseIntersection {
             pos.x = pointPos.x;
             pos.y = lineEndPos.y;
         } else {
-            double m1, m2, b1, b2;
             m1 = (lineBeginPos.y - lineEndPos.y) / (lineBeginPos.x - lineEndPos.x);
             b1 = lineEndPos.y - (m1 * lineEndPos.x);
             m2 = -1.0 / m1;
@@ -34,15 +34,17 @@ class PerpendicularLine2D : public BaseIntersection {
     };
 
     //--------------------------------------------------------------
-    inline vector<ofVec2f> getMultipleIntersectionsManagement(vector<ofxIntersection2D::ObjectLine> lineList, vector<ofVec2f> 	pointList) {
+    inline vector<ofVec2f> getMultipleIntersectionsManagement(vector<ofxIntersection2D::ObjectLine> lineList, vector<ofVec2f> pointList) {
         vector<ofVec2f> positions;
 
         int totalLine = lineList.size();
         int totalPoint = pointList.size();
 
+        ofPoint perpendicularPos;
+
         for (int i = 0; i < totalLine; i++) {
             for (int j = 0; j < totalPoint; j++) {
-                ofPoint perpendicularPos = getPerpendicularPosition(dataLineList[i].p1, dataLineList[i].p2, pointList[j]);
+                perpendicularPos = getPerpendicularPosition(dataLineList[i].p1, dataLineList[i].p2, pointList[j]);
                 positions.push_back(perpendicularPos);
             }
         }

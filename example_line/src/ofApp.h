@@ -10,6 +10,8 @@ class ofApp : public ofBaseApp {
     void draw();
 
    private:
+    string caption();
+
     ofxIntersection2D::BaseIntersection *intersection;
 
     int total;

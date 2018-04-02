@@ -64,17 +64,17 @@ void ofApp::update() {
 //--------------------------------------------------------------
 void ofApp::draw() {
     // draw : line
-    ofSetColor(0, 0, 0);
+    ofSetColor(0, 0, 255);
     ofDrawLine(line.p1, line.p2);
 
     // draw : point
-    ofSetColor(255, 0, 0);
+    ofSetColor(0, 0, 255);
     for (int i = 0; i < totalPoint; i++) {
         ofDrawCircle(pointList[i], 10);
     }
 
     // draw : intersection
-    ofSetColor(0, 0, 255);
+    ofSetColor(255, 0, 0);
     for (int i = 0; i < totalIntersection; i++) {
         ofDrawLine(pointList[i], intersectionList[i]);
         ofDrawCircle(intersectionList[i], 10);

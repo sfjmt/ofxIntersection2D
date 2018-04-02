@@ -5,72 +5,56 @@
 #include "ofxIntersection2DObjects.hpp"
 
 namespace ofxIntersection2D {
-class BaseIntersection : public ofThread {
+class BaseIntersection {
    public:
     BaseIntersection(){};
-    ~BaseIntersection() {
-        // Stop thread
-        stop();
-        waitForThread(true);
-    };
+    ~BaseIntersection(){};
 
     inline int getIntersectionTotal() { return intersectionPositionList.size(); };
     inline vector<ofVec2f> getIntersections() { return intersectionPositionList; };
 
     virtual void clear(){};
 
-    virtual void addCircle(ofVec2f &centralPosition, double &radius){};
+    virtual void addCircle(ofVec2f &centralPosition, float &radius){};
     virtual void addLine(ofVec2f &beginPosition, ofVec2f &endPosition){};
     virtual void addPoint(ofVec2f &pt){};
 
-    virtual void render(vector<ofVec2f> &centralPositionList, vector<double> &radiusList){};
-    virtual void render(vector<ofxIntersection2D::ObjectCircle> &circleList){};
-
-    virtual void render(vector<ofVec2f> &lineBeginPosList, vector<ofVec2f> &lineEndPosList){};
-    virtual void render(vector<ofxIntersection2D::ObjectLine> &lineList){};
-
-    virtual void render(vector<ofVec2f> &lineBeginPosList, vector<ofVec2f> &lineEndPosList, vector<ofVec2f> &centralPositionList, vector<double> &radiusList){};
-    virtual void render(vector<ofxIntersection2D::ObjectLine> &lineList, vector<ofxIntersection2D::ObjectCircle> &circleList){};
-
-    virtual void start() { startThread(); };
-    virtual void stop() { stopThread(); };
+    virtual void setUsingOutsidePoints(bool toggle) { toggleUsingOutsidePoints = toggle; };
 
     virtual void setup(){};
     virtual void update(){};
-    virtual void updateInThread(){};
 
    protected:
+    //--------------------------------------------------------------
     template <typename T>
     void clearArray(vector<T> &arr) {
         arr.clear();
     };
 
-    vector<ofVec2f> intersectionPositionList;
+    //--------------------------------------------------------------
+    inline bool isInWindow(ofVec2f v) {
+        if ((v.x >= 0) && (v.x <= ofGetWindowWidth()) && (v.y >= 0) && (v.y <= ofGetWindowHeight())) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 
-   private:
-    void threadedFunction() {
-        while (isThreadRunning()) {
-            //--------------------------------------------------------------
-            // 1. lock
-            //--------------------------------------------------------------
-            if (lock()) {
-                //--------------------------------------------------------------
-                // 2. update
-                //--------------------------------------------------------------
-                updateInThread();
-
-                //--------------------------------------------------------------
-                // 3. unlock
-                //--------------------------------------------------------------
-                unlock();
-
-                //--------------------------------------------------------------
-                // 4. sleep
-                //--------------------------------------------------------------
-                sleep(0);
+    //--------------------------------------------------------------
+    inline bool isAlreadyInList(ofVec2f v, vector<ofVec2f> list) {
+        int total = list.size();
+        for (int i = 0; i < total; ++i) {
+            if ((int)v.x == (int)list[i].x && (int)v.y == (int)list[i].y) {
+                return true;
             }
         }
-    };
+        return false;
+    }
+
+    vector<ofVec2f> intersectionPositionList;
+    bool toggleUsingOutsidePoints = false;
+
+   private:
 };
 }
 

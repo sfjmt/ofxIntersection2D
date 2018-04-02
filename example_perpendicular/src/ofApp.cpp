@@ -57,6 +57,9 @@ void ofApp::update() {
     //--------------------------------------------------------------
     intersection->update();
 
+    //--------------------------------------------------------------
+    // 4. Get intersections
+    //--------------------------------------------------------------
     intersectionList = intersection->getIntersections();
     totalIntersection = intersectionList.size();
 }

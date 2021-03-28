@@ -4,7 +4,7 @@
 void ofApp::setup() {
     intersection = new ofxIntersection2D::Line2D();
 
-    total = 10;
+    total = 100;
     for (int i = 0; i < total; i++) {
         baseLineBeginPosList.push_back(ofVec2f(0, ofRandom(0.0, ofGetHeight())));
         baseLineEndPosList.push_back(ofVec2f(ofGetWidth(), ofRandom(0.0, ofGetHeight())));

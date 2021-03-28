@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "22C5E46C664E78142125145C2E71DE696817E056",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "22C5E46C664E78142125145C2E71DE696817E056" : 0,
+    "6E8C22D8054B831BDDF91F4CA6C8D903A4A09047" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "A093E2DE-CF31-4EC7-BC85-71207DB9DF4C",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "22C5E46C664E78142125145C2E71DE696817E056" : "ofxIntersection2D\/",
+    "6E8C22D8054B831BDDF91F4CA6C8D903A4A09047" : "..\/.."
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "example_line",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "example_line\/example_line.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/sfjmt\/ofxIntersection2D.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "22C5E46C664E78142125145C2E71DE696817E056"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:sfjmt\/oF_0.9.8_sfjmt_develop.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "6E8C22D8054B831BDDF91F4CA6C8D903A4A09047"
+    }
+  ]
+}

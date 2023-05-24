@@ -8,7 +8,7 @@
 #   The location of your root openFrameworks installation
 #       (default) OF_ROOT = ../../.. 
 ################################################################################
-# OF_ROOT = ../../..
+OF_ROOT = /Users/shoheifujimoto/GitHub/oF_0.11.2_sfjmt_develop/openFrameworks
 
 ################################################################################
 # PROJECT ROOT
